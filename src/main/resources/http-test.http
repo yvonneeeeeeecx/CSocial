@@ -1,0 +1,19 @@
+### GET request to example server
+GET https://examples.http-client.intellij.net/get
+    ?generated-in=IntelliJ IDEA
+
+###
+### 健康检查
+GET http://localhost:8080/health
+
+### 更新用户1001位置
+POST http://localhost:8080/api/location/update?userId=1001&latitude=39.9087&longitude=116.3975
+
+### 更新用户1002位置
+POST http://localhost:8080/api/location/update?userId=1002&latitude=39.9088&longitude=116.3976
+
+### 查询附近用户
+GET http://localhost:8080/api/location/nearby?userId=1001&latitude=39.9087&longitude=116.3975&radius=0.1
+
+### 获取用户1001位置
+GET http://localhost:8080/api/location/user/1001

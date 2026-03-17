@@ -1,0 +1,52 @@
+@username = test01
+@password = 123456
+@nickname = 测试用户
+@email = test01@qq.com
+@userId = 1
+@toUserId = 2
+@postId = 1
+@title = 第一条动态
+@content = 校园社交平台联调成功
+@comment = 这是一条评论
+@adminUserId = 1
+@lat = 39.9042
+@lng = 116.4074
+
+### 用户注册
+POST http://localhost:8080/api/user/register?username={{username}}&password={{password}}&nickname={{nickname}}&email={{email}}
+
+### 用户登录
+POST http://localhost:8080/api/user/login?username={{username}}&password={{password}}
+
+### 发布动态
+POST http://localhost:8080/api/post?userId={{userId}}&title={{title}}&content={{content}}&imageUrl=
+
+### 分页查看动态
+GET http://localhost:8080/api/post/page?page=1&size=5
+
+### 标记心动对象
+POST http://localhost:8080/api/relation/like/{{toUserId}}?fromUserId={{userId}}
+
+### 触发心动铃
+POST http://localhost:8080/api/alarm/ring?userId={{userId}}&latitude={{lat}}&longitude={{lng}}&radiusKm=1
+
+### 点赞动态
+POST http://localhost:8080/api/post/{{postId}}/like
+
+### 评论动态
+POST http://localhost:8080/api/post/{{postId}}/comment?userId={{userId}}&content={{comment}}
+
+### 查看评论
+GET http://localhost:8080/api/post/{{postId}}/comments
+
+### 公告列表
+GET http://localhost:8080/api/announcement
+
+### 管理员看用户列表
+GET http://localhost:8080/api/admin/users?adminUserId={{adminUserId}}
+
+### 管理员发布公告
+POST http://localhost:8080/api/admin/announcements?adminUserId={{adminUserId}}&title=系统维护通知&content=今晚23点维护30分钟
+
+### 管理员禁用用户
+PUT http://localhost:8080/api/admin/users/{{toUserId}}/status?adminUserId={{adminUserId}}&status=DISABLED
